@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Lambda Function in Typescript
+Globals:
+  Function:
+  Timeout: 3
+Resources:
+  TypescriptFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+     CodeUri: src/built
+     Handler: app.lambdaHandler
+     Runtime: nodejs16.x
+     Events:
+      Typescript:
+       Type: Api
+        Properties:
+         Path: /src
+         Method: get
